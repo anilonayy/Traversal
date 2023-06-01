@@ -1,0 +1,30 @@
+﻿@model List<Comment>
+
+<div class="comments mt-5 mb-4">
+    <h4 class="side-title ">Yorum Sayısı (@Model.Count())</h4>
+    @foreach (var p in Model)
+    {
+        <div class="media">
+            <div class="img-circle">
+                <img src="~/user-images/@p.AppUser.ImageUrl" class="img-fluid" alt="Profile Picture">
+            </div>
+            <div class="media-body">
+
+                <ul class="time-rply mb-2">
+                    <li>
+                        <a href="#" class="name mt-0 mb-2 d-block">@p.AppUser.Name @p.AppUser.Surname</a>
+                        @p.CommentDate.ToString("dd MMM yyyy")
+
+                    </li>
+                        
+                </ul>
+                <p>
+                   @p.CommentContent
+                </p>
+            </div>
+        </div>
+    }
+
+
+    
+</div>

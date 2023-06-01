@@ -1,0 +1,43 @@
+﻿@model UserEditViewModel
+
+
+<h1>Profil Düzenle</h1>
+<form method="POST" asp-action="Update" asp-controller="Profile" enctype="multipart/form-data">  
+    <div>
+        <label class="form-label">Adınız</label>
+        <input asp-for="Name" class="form-control"/>
+    </div>
+    <div>
+        <label class="form-label">Adınız</label>
+        <input asp-for="Surname" class="form-control" />
+    </div>
+    <div>
+        <label class="form-label">Telefon Numarası</label>
+        <input asp-for="PhoneNumber" class="form-control"/>
+    </div>
+    <div>
+        <label class="form-label">Email</label>
+        <input asp-for="Email" class="form-control"/>
+    </div>
+    <div>
+        <label class="form-label">Şifre</label>
+        <input asp-for="Password" class="form-control" />
+    </div>
+    <div>
+        <label class="form-label">Şifre Onayla</label>
+        <input asp-for="ConfrimPassword " class="form-control" />
+    </div>
+
+    <div>
+        <label class="form-label">Profil Resmi</label>
+        @if(Model.ImageUrl!=null)
+        {
+            <img src="~/user-images/@Model.ImageUrl" />
+        }
+        <input type="file" asp-for="Image" class="form-control" />
+    </div>
+
+    
+
+    <button type="submit" class="btn btn-success mt-4">Güncelle</button>
+</form>

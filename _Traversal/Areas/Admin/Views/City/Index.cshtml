@@ -1,0 +1,157 @@
+﻿@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Şehir - Ülke İşlemleri</h2>
+<br />
+<button type="button" id="btngetlist" class="btn btn-outline-info">Şehirleri Getir</button>
+<button type="button" id="btngetbyid" class="btn btn-outline-primary">Şehir Getir</button>
+<button type="button" id="btnaddcity" class="btn btn-outline-success">Şehir Ekle</button>
+<button type="button" id="btngetlist" class="btn btn-outline-danger">Şehir Sil</button>
+<button type="button" id="btngetlist" class="btn btn-outline-warning">Şehir Güncelle</button>
+
+<div id="CityList">
+    Buraya Şehir Listesi Gelicek
+</div>
+
+<br />
+
+<input type="number" class="form-control" id="txtid" placeholder="Şehir Idsi giriniz. "/>
+<div id="getlistbyid">
+
+</div>
+
+<div>
+    <input class="form-control mb-2" placeholder="Şehir" id="txtcity" type="text"/>
+    <input class="form-control mb-2" placeholder="Gün- Gece" id="txtdaynight" type="text"/>
+    <input class="form-control mb-2" placeholder="Fiyat" id="txtprice" type="text"/>
+    <input class="form-control mb-2" placeholder="Kapasite" id="txtcapacity" type="text"/>
+</div>
+@section Scripts
+    {
+
+    <script>
+
+        $("#btngetlist").click(() => {
+            $.ajax({
+                type: "get",
+                url: "/Admin/City/CityList",
+                contentType: "application/json",
+                dataType: "json",
+
+                success: function (res) {
+
+                    let v = jQuery.parseJSON(res);
+
+                    let tableHtml = `<table class="table table-bordered"> <tr> <th>Şehir Adı</th> <th>Gün - Gece</th> <th>Fiyat</th> <th>Sil</th> </tr>`;
+                    $.each(v, (index, value) => {
+                        tableHtml += `
+                                            <tr>
+                                                <td>${value.City}</td>
+                                                <td>${value.DayNight}</td>
+                                                <td>₺ ${value.Price}</td>
+                                                <td><a href="javascript:void(0);" delete-id="${value.DestinationId}" class="btn btn-danger">Sil</a> </td>
+                                            </tr>
+                            `});
+                            
+                    tableHtml += "</table>";
+
+                    $("#CityList").html(tableHtml);
+           }})});
+
+
+        $("#btnaddcity").click(() => {
+
+            let cityValues = {
+                City: $("#txtcity").val(),
+                DayNight: $("#txtdaynight").val(),
+                Price: $("#txtprice").val(),
+                Capacity: $("#txtcapacity").val(),
+            };
+
+
+            $.ajax({
+                type: "post",
+                url: "/Admin/City/AddCity/",
+                data: cityValues,
+
+                success: function (res) {
+
+                    let v = jQuery.parseJSON(res);
+                    alert("Şehir başarılı bir şekilde eklendi.")
+                }
+            })
+        });
+
+        $("#btngetbyid").click(x => {
+
+            let id = $("#txtid").val();
+
+            $.ajax(
+                {
+                    contentType: "application/json",
+                    dataType: "json",
+                    url: "/Admin/City/GetById/" + id,
+                    type: "GET",
+
+                    success: res => {
+
+                        $("#getlistbyid").html(null);
+                        if(res!="null")
+                        {
+                            res = jQuery.parseJSON(res);
+                            let htmlstr = `
+                                    <table  class="table table-bordered">
+                                        <tr>
+                                            <th>Şehir Adı</th>
+                                            <th>Gün - Gece</th>
+                                            <th>Fiyat</th>
+                                        </tr>
+                                        <tr>
+                                            <td>${res.City}</td>
+                                            <td>${res.DayNight}</td>
+                                            <td>${res.Price}</td>
+                                        </tr>
+                                    </table>
+                                    `;
+
+                            $("#getlistbyid").html(htmlstr);
+                        }
+                        else{
+                            let htmlstr = `
+                                            <table  class="table table-bordered">
+                                                <tr>
+                                                    <th>Şehir Adı</th>
+                                                    <th>Gün - Gece</th>
+                                                    <th>Fiyat</th>
+                                                </tr>
+                                                <tr>
+                                                           <td colspan="3"> Böyle Bir Şehir Bulunamadı. </td>
+                                                </tr>
+                                            </table>
+                                            `;
+                            $("#getlistbyid").html(htmlstr);
+                        }
+                         
+
+
+
+                    }
+                }
+                
+            )
+        })
+        $(document).on("click", "[delete-id]", function () {
+            var id = $(this).attr("delete-id");
+
+            $.ajax({
+                url:"/Admin/City/Delete/"+id,
+                type : "DELETE",
+                success: res => {
+                    console.log(res);
+                    alert("Başarıyla Silindi!");
+                }
+            });
+        })
+    </script>
+}

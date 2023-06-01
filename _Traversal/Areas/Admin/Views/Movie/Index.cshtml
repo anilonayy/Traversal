@@ -1,0 +1,26 @@
+﻿@using _Traversal.Areas.Admin.Models;
+@model List<MovieViewModel>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Film Adı</th>
+            <th>Imbd Puanı</th>
+            <th>Yapım Yılı</th>
+            <th>Fragman</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var x in Model)
+        {
+            <tr>
+                <td>@x.rank</td>
+                <td>@x.title</td>
+                <td>@x.rating</td>
+                <td>@x.year</td>
+                <td><a href="@x.trailer" target="_blank">Fragmanı İzle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

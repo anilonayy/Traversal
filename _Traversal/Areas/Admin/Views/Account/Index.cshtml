@@ -1,0 +1,22 @@
+﻿@model AccountCreateViewModel
+
+<h3>Unit of work Personel Prim Transferi</h3>
+
+<form method="POST">
+    <div class="mb-2">
+        <label class="form-label" asp-for="Amount">Bakiye</label>
+        <input class="form-control" asp-for="Amount" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="SenderId">Gönderici ID</label>
+        <input class="form-control" asp-for="SenderId" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="ReceiverId">Alıcı ID</label>
+        <input class="form-control" asp-for="ReceiverId" />
+    </div>
+
+    <button class="mt-2 btn btn-success">Gönder</button>
+</form>

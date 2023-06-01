@@ -1,0 +1,20 @@
+﻿@model CreateDestinationCommand
+
+<form asp-action="Add" method="POST">
+    <div class="mb-2">
+        <label class="form-label" asp-for="City">Şehir</label>
+        <input class="form-control" asp-for="City" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="DayNight">Süre</label>
+        <input class="form-control" asp-for="DayNight" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="Price">Ücret</label>
+        <input class="form-control" asp-for="Price" />
+    </div>
+
+    <button class="btn btn-outline-success mt-3">Ekle</button>
+</form>

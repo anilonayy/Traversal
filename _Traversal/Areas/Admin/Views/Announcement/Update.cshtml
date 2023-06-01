@@ -1,0 +1,19 @@
+﻿@model AnnouncementUpdateDTO
+
+<form asp-action="Update" asp-controller="Announcement" method="post">
+    <input type="hidden" asp-for="AnnouncementId"/>
+    <div class="mb-2">
+        <label class="form-label">Başlık</label>
+        <input class="form-control" asp-for="Title" />
+        <span asp-validation-for="Title" class="text-danger"></span>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label">İçerik</label>
+        <textarea class="form-control" asp-for="Content" cols="" rows="4"></textarea>
+        <span asp-validation-for="Content" class="text-danger"></span>
+
+    </div>
+
+    <button type="submit" class="btn btn-success mt-4">Güncelle</button>
+</form>

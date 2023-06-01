@@ -1,0 +1,36 @@
+﻿@model Guide
+
+<form asp-action="Update" asp-controller="Guide" method="POST" enctype="multipart/form-data">
+    <input type="hidden" asp-for="GuideId"/>
+
+    <div class="mb-2">
+        <label asp-for="Name" class="form-label">Rehber Adı</label>
+        <input class="form-control" asp-for="Name" />
+        <span asp-validation-for="Name"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="Description" class="form-label">Açıklama</label>
+        <input class="form-control" asp-for="Description" />
+        <span asp-validation-for="Description"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="TwitterUrl" class="form-label">Twitter URL</label>
+        <input class="form-control" asp-for="TwitterUrl" />
+        <span asp-validation-for="TwitterUrl"></span>
+    </div>
+    <div class="mb-2">
+        <label asp-for="InstagramUrl" class="form-label">Instagram URL</label>
+        <input class="form-control" asp-for="InstagramUrl" />
+        <span asp-validation-for="InstagramUrl"></span>
+    </div>
+
+    <div>
+        <label asp-for="FormImage" class="form-label">Rehber Görseli</label>
+        <input type="file" asp-for="FormImage" class="form-control" />
+        <br />
+        <img src="~/@Model.Image" style="width:150px;height:150px;object-fit:cover" />
+        <input type="hidden" asp-for="Image"/>
+    </div>
+
+    <button type="submit" class="btn btn-success mt-4">Güncelle</button>
+</form>

@@ -1,0 +1,26 @@
+﻿@using _Traversal.Areas.Admin.Models;
+@model MailRequest
+
+<form method="post" asp-action="Index" asp-controller="Mail">
+
+
+    <div class="mb-2">
+        <label asp-for="ReceiverMail" class="form-label">Alıcı Mail Adresi</label>
+        <input class="form-control" asp-for="ReceiverMail" placheholder="abc@asd.xyz" />
+    </div>
+
+
+
+    <div class="mb-2">
+        <label asp-for="Subject" class="form-label">Başlık</label>
+        <input class="form-control" asp-for="Subject" placheholder="..." />
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="Body" class="form-label">İçerik</label>
+        <input class="form-control" asp-for="Body" placheholder="..." />
+    </div>
+
+
+    <button class="btn btn-success mt-3">Mail Gönder</button>
+</form>

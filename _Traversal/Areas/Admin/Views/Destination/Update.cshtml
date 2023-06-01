@@ -1,0 +1,88 @@
+﻿@model DestinationUpdateFormViewModel
+
+<form asp-action="Update" asp-controller="Destination" method="POST" enctype="multipart/form-data">
+    <input type="hidden" asp-for="DestinationId" />
+    <div class="col-12 mb-1">
+        <label class="form-label">Rota Adı</label>
+        <input class="form-control" asp-for="City" />
+        <span asp-validation-for="City" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 mb-1">
+        <label class="form-label">Kaç Gün Kaç Gece</label>
+        <input class="form-control" asp-for="DayNight" />
+        <span asp-validation-for="DayNight" class="text-danger"></span>
+
+    </div>
+
+    <div class="col-12 mb-1">
+        <label class="form-label">Rota Fiyatı</label>
+        <input class="form-control" asp-for="Price" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 mb-1">
+        <label class="form-label">Rota Açıklaması</label>
+        <textarea class="form-control" asp-for="Description"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+        <div class="col-12 mb-1">
+        <label class="form-label">Tur Rehberi</label>
+        <select asp-for="GuideId" asp-items="@Model.Guides" class="form-select"></select>
+        <span asp-validation-for="GuideId" class="text-danger"></span>
+
+
+
+
+    </div>
+    <div class="col-12 mb-1">
+        <label class="form-label">Rota Açıklaması 2</label>
+        <textarea class="form-control" asp-for="Description2"></textarea>
+        <span asp-validation-for="Description2" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 mb-1">
+        <label class="form-label">Tur Kapasitesi</label>
+        <input class="form-control" asp-for="Capacity" />
+        <span asp-validation-for="Capacity" class="text-danger"></span>
+    </div>
+
+    <div class="col-12 mb-1">
+        <label class="form-label">Kapak Görseli</label>
+        <input class="form-control" asp-for="FileCoverImage" />
+        @if(Model.CoverImage != null)
+        {
+            <img  src="@Model.CoverImage" style="width:150px;height:150px;object-fit:cover;"/>
+        }
+        <span asp-validation-for="FileCoverImage" class="text-danger"></span>
+    </div>
+    <div class="col-12 mb-1">
+        <label class="form-label">Görsel 1</label>
+        <input class="form-control" asp-for="FileImage1" />
+        @if (Model.Image1 != null)
+        {
+            <img src="@Model.Image1" style="width:150px;height:150px;object-fit:cover;" />
+        }
+        <span asp-validation-for="FileImage1" class="text-danger"></span>
+    </div>
+    <div class="col-12 mb-1">
+        <label class="form-label">Kapak Görseli</label>
+        <input class="form-control" asp-for="FileImage2" />
+        @if (Model.Image2 != null)
+        {
+            <img src="@Model.Image2" style="width:150px;height:150px;object-fit:cover;" />
+        }
+        <span asp-validation-for="FileImage2" class="text-danger"></span>
+    </div>
+
+    <input type="hidden" asp-for="CoverImage"/>
+    <input type="hidden" asp-for="Image1"/>
+    <input type="hidden" asp-for="Image2"/>
+    <button class="mt-3 btn btn-success" type="submit">Rotayı Güncelle</button>
+
+    <div asp-validation-summary="All">
+    </div>
+
+
+</form>

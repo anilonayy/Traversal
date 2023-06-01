@@ -1,0 +1,21 @@
+﻿@using _Traversal.CQRS.Commands.Guide;
+@model CreateGuideCommand
+
+<form method="POST" asp-action="Add">
+    <div class="mb-2">
+        <label asp-for="Name" class="form-label">Rehber Adı</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="Description" class="form-label">Rehber Açıklaması</label>
+        <input asp-for="Description" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label asp-for="Image" class="form-label">Rehber Görsel Url</label>
+        <input asp-for="Image" class="form-control" />
+    </div>
+
+    <button class="btn btn-success mt-3">Rehber Ekle</button>
+</form>

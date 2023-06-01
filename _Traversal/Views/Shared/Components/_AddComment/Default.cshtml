@@ -1,0 +1,33 @@
+﻿@model Comment
+
+<div class="leave-comment-form mt-5" id="reply">
+    @if(ViewBag.IsLogin)
+    {
+        <h4 class="side-title mb-2">Yorum Bırak</h4>
+
+        <form method="POST" asp-controller="Comment" asp-action="Add">
+            <input type="hidden" asp-for="DestinationId" />
+            <div class="form-group">
+                <textarea asp-for="CommentContent" class="form-control" placeholder="Yorumunuz *" required=""></textarea>
+            </div>
+
+            <div class="submit text-right">
+                <button type="submit" class="btn btn-style btn-primary">Yorum Yap </button>
+            </div>
+        </form>
+    }
+    else
+    {
+        <h3>Yorum Yapmak İçin Giriş Yapmanız Gerek!</h3>
+    }
+
+    
+</div>
+
+
+
+
+
+
+
+

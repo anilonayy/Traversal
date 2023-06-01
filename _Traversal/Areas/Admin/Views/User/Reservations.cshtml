@@ -1,0 +1,46 @@
+﻿@model List<Reservation>
+
+<h1>Kullanıcının Geçmiş Rezervasyonları</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Misafir Ad Soyad</th>
+            <th>Rota</th>
+            <th>Kişi Sayısı</th>
+            <th>Not</th>
+            <th>Rezervasyon Tarihi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int sayac = 0;
+        }
+        @if (!Model.Any())
+        {
+            <h3>Kullanıcı henüz bir rezervasyon yapmamış.</h3>
+        }
+        else
+        {
+
+
+            @foreach (var data in Model)
+            {
+                sayac++;
+                <tr>
+                    <td>@sayac</td>
+                    <td>###</td>
+                    <td>@data.Destination.City</td>
+                    <td>@data.PersonCount</td>
+                    <td>@data.Description</td>
+                    <td>
+                        @{
+                            ((DateTime)data.ReservationDate).ToString("dd-MMM-yyyy");
+                        }
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>

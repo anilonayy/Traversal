@@ -1,0 +1,38 @@
+﻿@model List<Destination>
+
+
+<h4 class="fw-bold py-3 mb-4">Rotalar</h4>
+
+<a asp-action="Add" asp-controller="Destination" class="btn btn-primary my-3">Yeni Rota Ekle</a>
+
+<!-- Basic Layout -->
+<div class="row">
+    <table class="table table-bordered">
+        <thead>
+        <th>#</th>
+        <th>Görsel</th>
+        <th>Şehir</th>
+        <th>Fiyat</th>
+        <th>Kapasite</th>
+        <th>Sitede Gör</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+        </thead>
+        <tbody>
+            @foreach (var d in Model)
+            {
+                <tr>
+                    <td><img src="@d.CoverImage" style="width:100px;height:100px" /></td>
+                    <th>@d.DestinationId</th>
+                    <td>@d.City</td>
+                    <td>@d.Price</td>
+                    <td>@d.Capacity</td>
+                    <td><a class="btn btn-warning" target="_blank" asp-action="Detail" asp-controller="Destination" asp-route-id="@d.DestinationId" asp-area="">Turu Gör</a></td>
+                    <td><a class="btn btn-danger" target="_blank" asp-action="Delete" asp-controller="Destination" asp-route-id="@d.DestinationId">Sil</a></td>
+                    <td><a class="btn btn-info" target="_blank" asp-action="Update" asp-controller="Destination" asp-route-id="@d.DestinationId">Güncelle</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
+</div>

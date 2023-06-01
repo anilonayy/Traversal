@@ -1,0 +1,40 @@
+﻿<!DOCTYPE html>
+
+<html lang="tr"
+      class="light-style layout-menu-fixed"
+      dir="ltr"
+      data-theme="theme-default"
+      data-assets-path="~/admin-theme/assets/"
+      data-template="vertical-menu-template-free">
+<head>
+    <partial name="~/Areas/Admin/Views/Shared/LayoutPartials/_HeadPartialView.cshtml"></partial>
+    @RenderSection("Css",required:false)
+
+</head>
+
+<body>
+    <div class="layout-wrapper layout-content-navbar">
+        <div class="layout-container">
+
+            <partial name="~/Areas/Admin/Views/Shared/LayoutPartials/_AsidePartialView.cshtml"></partial>
+            <div class="layout-page">
+                <partial name="~/Areas/Admin/Views/Shared/LayoutPartials/_NavPartialView.cshtml"></partial>
+
+                <div class="content-wrapper">
+
+                    <div class="container-xxl flex-grow-1 container-p-y">
+
+                        @RenderBody()
+
+                    </div>
+                    <partial name="~/Areas/Admin/Views/Shared/LayoutPartials/_FooterPartialView.cshtml"></partial>
+                    <div class="content-backdrop fade"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <partial name="~/Areas/Admin/Views/Shared/LayoutPartials/_ScriptPartialView.cshtml"></partial>
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

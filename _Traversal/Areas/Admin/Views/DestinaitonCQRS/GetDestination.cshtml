@@ -1,0 +1,21 @@
+﻿@model GetDestinationByIdQueryResult
+
+<form asp-action="Update" method="POST">
+    <input type="hidden" asp-for="DestinationId"/>
+    <div class="mb-2">
+        <label class="form-label" asp-for="city">Şehir</label>
+        <input class="form-control" asp-for="city" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="daynight">Süre</label>
+        <input class="form-control" asp-for="daynight" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="price">Ücret</label>
+        <input class="form-control" asp-for="price" />
+    </div>
+
+    <button class="btn btn-outline-success mt-3">Güncelle</button>
+</form>

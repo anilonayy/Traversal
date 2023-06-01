@@ -1,0 +1,27 @@
+﻿@using _Traversal.CQRS.Commands.Guide;
+@using _Traversal.CQRS.Queries.Guide;
+@using _Traversal.CQRS.Results.Guide;
+@model GetGuideByIdQueryResult
+
+
+<form asp-action="Update" method="post">
+    
+    <input type="hidden" asp-for="GuideId"/>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="Name">Adı</label>
+        <input class="form-control" asp-for="Name"/>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="Image">Görsel URL</label>
+        <input class="form-control" asp-for="Image"/>
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="Description">Açıklama</label>
+        <input class="form-control" asp-for="Description" />
+    </div>
+
+    <button class="btn btn-success mt-3">Güncelle</button>
+</form>

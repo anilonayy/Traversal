@@ -1,0 +1,53 @@
+﻿@section Css{
+        <link rel="stylesheet" href="~/Traversal-Liberty/assets/css/style-liberty.css">
+    <style>
+        .destination-ratio{
+            aspect-ratio: 10/6;
+            object-fit:cover;
+            width:100%;
+        }
+    </style>
+}
+@model List<Destination>
+
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container">
+            <h2 class="title">Rotalar </h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a asp-controller="Default" asp-action="Index">Ana Sayfa</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> Rotalar </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+<!--  Work gallery section -->
+<section class="grids-1 py-5">
+    <div class="grids py-lg-5 py-md-4">
+        <div class="container">
+            <h3 class="hny-title mb-5">Rotalar</h3>
+            <div class="row">
+                @foreach (var d in Model)
+                {
+                    <div class="col-lg-4 col-md-4 col-6">
+                        <div class="column">
+                            <a asp-route="DestinationDetail" asp-route-id="@d.DestinationId">
+                                <img src="@d.CoverImage" alt="@d.City" class="img-fluid destination-ratio">
+                            </a>
+                            <div class="info">
+                                <h4><a asp-route="DestinationDetail" asp-route-id="@d.DestinationId">@d.City</a></h4>
+                                <p>@d.DayNight </p>
+                                <div class="dst-btm">
+                                    <h6 class="">Başlayan Fiyatlarla </h6>
+                                    <span>@d.Price ₺</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+    </div>
+</section>

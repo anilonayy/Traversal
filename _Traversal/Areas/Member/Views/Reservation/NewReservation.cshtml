@@ -1,0 +1,27 @@
+﻿@model Reservation
+
+<form method="POST" asp-action="NewReservation" asp-controller="Reservation">
+
+    <div>
+        <label class="form-label" asp-for="DestinationId">Tur Seçin</label>
+        <select asp-items="@ViewBag.ListValues" asp-for="DestinationId" class="form-control"></select>
+        <span asp-validation-for="DestinationId" class="text-danger"></span>
+    </div>
+    <div>
+        <label class="form-label" asp-for="PersonCount">Tura Katılıcak Kişi Sayısı</label>
+        <input asp-for="PersonCount" class="form-control" />
+        <span asp-validation-for="PersonCount" class="text-danger"></span>
+    </div>
+    <div>
+        <label class="form-label" asp-for="ReservationDate">Rezervasyon Tarihi</label>
+        <input type="date" asp-for="ReservationDate" class="form-control" />
+        <span asp-validation-for="ReservationDate" class="text-danger"></span>
+    </div>
+    <div>
+        <label class="form-label" asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <button type="submit">Rezervasyon Oluştur</button>
+</form>

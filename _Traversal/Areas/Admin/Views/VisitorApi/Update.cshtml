@@ -1,0 +1,34 @@
+﻿@using _Traversal.Areas.Admin.Models;
+@model VisitorViewModel
+
+
+<form asp-action="Update" asp-controller="VisitorApi" method="POST">
+
+    <input type="hidden" asp-for="VisitorId" />
+    <div class="mb-2">
+        <label class="form-label" asp-for="City">Şehir</label>
+        <input asp-for="City" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="Country">Ülke</label>
+        <input asp-for="Country" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="Name">Adı</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <div class="mb-2">
+        <label class="form-label" asp-for="Surname">Soyadı</label>
+        <input asp-for="Surname" class="form-control" />
+    </div>
+    <div class="mb-2">
+        <label class="form-label" asp-for="Mail">Mail</label>
+        <input asp-for="Mail" class="form-control" />
+    </div>
+
+
+    <button class="btn btn-primary mt-2">Ziyaretçiyi Güncelle</button>
+</form>

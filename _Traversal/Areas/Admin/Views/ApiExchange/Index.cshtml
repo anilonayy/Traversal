@@ -1,0 +1,28 @@
+﻿@using _Traversal.Areas.Admin.Models;
+@model List<ER>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Kur Adı</th>
+            <th>Tutar</th>
+    
+        </tr>   
+    </thead>
+    <tbody>
+        @{
+            int sayac = 0;
+        }
+        @foreach (var x in Model)
+        {
+            sayac++;
+            <tr>
+                <th>@sayac</th>
+                <td>@x.currency</td>
+                <td>@x.exchange_rate_buy</td>
+                
+            </tr>
+        }
+    </tbody>
+</table>

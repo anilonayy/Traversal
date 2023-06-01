@@ -1,0 +1,29 @@
+﻿@model List<AnnouncementListDTO>
+
+
+<a class="btn btn-success my-3" asp-action="Add">Yeni Duyuru Ekle</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Başlık</th>
+            <th>İçerik</th>
+            <th>Güncelle</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var Announcement in Model)
+        {
+            <tr>
+                <td>@Announcement.AnnouncementId</td>
+                <td>@Announcement.Title</td>
+                <td>@Announcement.Content</td>
+                <td><a class="btn btn-outline-warning" asp-action="update" asp-controller="announcement" asp-route-id="@Announcement.AnnouncementId"> Güncelle </a></td>
+                <td><a class="btn btn-outline-danger" asp-action="delete" asp-controller="announcement" asp-route-id="@Announcement.AnnouncementId">Sil</a></td>
+
+            </tr>
+        }
+    </tbody>
+</table>

@@ -1,0 +1,35 @@
+﻿@using _Traversal.Areas.Admin.Models;
+
+@model List<VisitorViewModel>
+
+    <a asp-action="Add" class="btn btn-primary">Yeni Ziyaretçi Ekle</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <td>#</td>
+            <td>Adı</td>
+            <td>Soyadı</td>
+            <td>Şehri</td>
+            <td>Ülkesi</td>
+            <td>Mail</td>
+            <td>Sil</td>
+            <td>Güncelle</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var x in Model)
+        {
+            <tr>
+                <td>@x.VisitorId</td>
+                <td>@x.Name</td>
+                <td>@x.Surname</td>
+                <td>@x.City</td>
+                <td>@x.Country</td>
+                <td>@x.Mail</td>
+                <td><a class="btn btn-warning" asp-action="Update" asp-controller="VisitorApi" asp-route-id="@x.VisitorId">Güncelle</a></td>
+                <td><a class="btn btn-delete" asp-action="Delete" asp-controller="VisitorApi" asp-route-id="@x.VisitorId">Sil</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

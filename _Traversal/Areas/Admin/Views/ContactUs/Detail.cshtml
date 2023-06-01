@@ -1,0 +1,30 @@
+﻿
+@model ContactUs
+
+<div class="row mb-2">
+    <div class="col-12 col-md-2">E-Mail:</div>
+    <div class="col-12 fw-bold col-md-10">@Model.Mail</div>
+
+</div>
+<div class="row mb-2">
+    <div class="col-12 col-md-2">Gönderen:</div>
+    <div class="col-12 fw-bold col-md-10">@Model.Name</div>
+</div>
+
+
+<div class="row mb-2">
+    <div class="col-12 col-md-2">Başlık:</div>
+    <div class="col-12 fw-bold col-md-10">@Model.Subject</div>
+</div>
+
+
+
+<div class="row mb-2">
+    <div class="col-12 col-md-2">Mesaj :</div>
+    <div class="col-12 fw-bold col-md-10">@Model.MessageBody</div>
+</div>
+
+<div class="row mb-2">
+    <div class="col-12 col-md-2">Mesaj Tarihi :</div>
+    <div class="col-12 fw-bold col-md-10">@Model.MessageDate</div>
+</div>

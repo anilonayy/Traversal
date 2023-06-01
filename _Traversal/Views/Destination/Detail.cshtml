@@ -1,0 +1,98 @@
+﻿@section Css{
+    <link rel="stylesheet" href="~/Traversal-Liberty/assets/css/style-liberty.css">
+}
+
+@model Destination
+
+<section class="w3l-about-breadcrumb text-left">
+    <div class="breadcrumb-bg breadcrumb-bg-about py-sm-5 py-4">
+        <div class="container">
+            <h2 class="title">@Model.City</h2>
+            <ul class="breadcrumbs-custom-path mt-2">
+                <li><a asp-action="Index" asp-controller="Default">Ana Sayfa</a></li>
+                <li class="active"><span class="fa fa-arrow-right mx-2" aria-hidden="true"></span> @Model.City </li>
+            </ul>
+        </div>
+    </div>
+</section>
+<!-- //about breadcrumb -->
+
+<section class="blog-post-main w3l-homeblock1">
+    <!--/blog-post-->
+    <div class="blog-content-inf pb-5">
+        <div class="container pb-lg-4">
+            <div class="single-post-image">
+                <div class="post-content">
+                    <img src="@Model.CoverImage" class="radius-image  w-100 mb-5" style="object-fit:cover;max-height:350px" alt="" />
+                </div>
+            </div>
+            <div class="single-post-content">
+                @Model.Description
+                <div class="sing-post-thumb mb-5 row pt-3">
+                    <div class="col-sm-6">
+                        <a href="#url"><img src="@Model.Image1" class="img-fluid radius-image" alt=""></a>
+                    </div>
+                    <div class="col-sm-6 mt-sm-0 mt-3">
+                        <a href="#url"><img src="@Model.Image2" class="img-fluid radius-image" alt=""></a>
+                    </div>
+                </div>
+                @Model.Description2
+
+                <div class="d-grid left-right mt-5 pb-md-5">
+                    <div class="buttons-singles tags">
+                        <h4>Tags :</h4>
+                        <a href="#blog-tag">Travel</a>
+                        <a href="#blog-tag">Culture</a>
+                        <a href="#blog-tag">Hotel</a>
+                        <a href="#blog-tag">Food</a>
+                    </div>
+                    <div class="buttons-singles">
+                        <h4>Share :</h4>
+                        <a href="#blog-share"><span class="fa fa-facebook" aria-hidden="true"></span></a>
+                        <a href="#blog-share"><span class="fa fa-twitter" aria-hidden="true"></span></a>
+                        <a href="#blog-share"><span class="fa fa-google-plus" aria-hidden="true"></span></a>
+                        <a href="#blog-share"><span class="fa fa-pinterest-p" aria-hidden="true"></span></a>
+                    </div>
+                </div>
+
+                
+
+                <!--//author-card-->
+                <div class="author-card mt-5">
+                    <div class="row align-items-center">
+                        <div class="col-sm-3 col-6">
+                            <div>
+                                <img src="/@Model.Guide.Image" alt="" class="rounded-circle img-fluid">
+                            </div>
+                        </div>
+                        <div class="col-sm-9 mt-sm-0 mt-3">
+                            <h3 class="mb-3 title">@Model.Guide.Name</h3>
+                            <p>
+                                @Model.Guide.Description
+                            </p>
+                            <ul class="author-icons mt-4">
+                                <li>
+                                    <a class="instagram" href="@Model.Guide.InstagramUrl">
+                                        <span class="fa fa-instagram"
+                                              aria-hidden="true"></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a class="twitter" href="@Model.Guide.TwitterUrl">
+                                        <span class="fa fa-twitter"
+                                              aria-hidden="true"></span>
+                                    </a>
+                                </li>
+
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                @await Component.InvokeAsync("_CommentList",new{DestinationId = @Model.DestinationId})
+                @await Component.InvokeAsync("_AddComment",new{DestinationId = @Model.DestinationId})
+            </div>
+        </div>
+        <!--//blog-post-->
+</section>

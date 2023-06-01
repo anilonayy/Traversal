@@ -1,0 +1,29 @@
+﻿<!doctype html>
+<html lang="tr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>@ViewData["Title"]</title>
+
+    <link href="//fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="/fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/Traversal-Starter/assets/css/style-starter.css">
+    @await RenderSectionAsync("Css",required: false);
+</head>
+
+<body>
+
+
+
+    @await Html.PartialAsync("~/Views/Shared/LayoutPartial/_HeaderPartial.cshtml")
+
+    @RenderBody()
+
+    @await Html.PartialAsync("~/Views/Shared/LayoutPartial/_FooterPartial.cshtml")
+
+    @await Html.PartialAsync("~/Views/Shared/LayoutPartial/_ScriptsPartial.cshtml")
+
+    @await RenderSectionAsync("Scripts",required: false)
+</body>
+
+</html>

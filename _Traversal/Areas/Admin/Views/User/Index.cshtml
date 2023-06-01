@@ -1,0 +1,45 @@
+﻿@model List<AppUser>
+
+<h1>Kullanıcı Listesi</h1>
+
+<a class="btn btn-secondary my-3" asp-area="" asp-action="SignUp" asp-controller="Login">Yeni Üye Ekle</a>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Ad Soyad</th>
+            <th>Kullanıcı Adı</th>
+            <th>E-Mail</th>
+            <th>Düzenle</th>
+            <th>Sil</th>
+            <th>Yorumlar</th>
+            <th>Tur Geçmişi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @{
+            int sayac = 0;
+        }
+        @foreach (var p in Model)
+        {
+            sayac++;
+            <tr>
+                <td>@sayac.ToString()</td>
+                <td>@p.Name @p.Surname</td>
+                <td>@p.UserName</td>
+                <td>@p.Email</td>
+                <td> <a class="btn btn-info" asp-action="Update" asp-controller="User" asp-route-id="@p.Id">Düzenle</a> </td>
+                <td> <a class="btn btn-danger" href="javascript:void(0);" onclick="DeleteUser(@p.Id)">Sil</a> </td>
+                <td> <a class="btn btn-danger" asp-action="Comments" asp-controller="User" asp-route-id="@p.Id">Yorumlar</a> </td>
+                <td> <a class="btn btn-success" asp-action="Reservations" asp-controller="User" asp-route-id="@p.Id">Tur Geçmişi</a> </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+<script>
+    const DeleteUser = id => {if(confirm("Silmek istediğinize emin misiniz ? ")) window.location.href="/Admin/User/Delete/"+id;}
+</script>
+

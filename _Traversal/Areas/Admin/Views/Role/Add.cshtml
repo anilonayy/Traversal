@@ -1,0 +1,14 @@
+﻿@model RoleAddDTO 
+
+
+<h1 class="mb-2">Yeni Rol Ekle</h1>
+
+
+<form method="POST" asp-action="Add">
+    <div class="mb-2">
+        <label asp-for="Name">Rol Adı</label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+
+    <button class="btn btn-success">Rolü Ekle</button>
+</form>

@@ -1,0 +1,26 @@
+﻿@model List<Comment>
+
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Kullanıcı</th>
+            <th>Blog</th>
+            <th>Tarih</th>
+            <th>Sil</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var p in Model)
+        {
+           <tr>
+                <td>@p.Id</td>
+                <td>@p.AppUser.Name @p.AppUser.Surname</td>
+                <td>@p.Destination.City</td>
+                <td>@p.CommentDate.ToString("dd-MM-yyyy")</td>
+                <td> <a class="btn btn-danger" asp-action="Delete" asp-controller="Comment" asp-route-id="@p.Id">Sil</a> </td>
+           </tr>
+        }
+    </tbody>
+</table>

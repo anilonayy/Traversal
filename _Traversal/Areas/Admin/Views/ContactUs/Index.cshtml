@@ -1,0 +1,32 @@
+﻿@model List<ContactUs>
+@{
+    int sayac = 0;
+}
+<h1>Bize Ulaşın Mesajları</h1>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Gönderen</th>
+            <th>Konu</th>
+            <th>Tarih</th>
+            <th>Sil</th>
+            <th>Mesajı Aç</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model)
+        {
+            sayac++;
+            <tr>
+                <td>@sayac</td>
+                <td>@x.Name</td>
+                <td>@x.Subject</td>
+                <td>@x.MessageDate.ToString("dd-MMM-yyyy")</td>
+                <td><a class="btn btn-outline-danger" asp-controller="ContactUs" asp-route-id="@x.ContactUsId" asp-action="ChangeStatus">Sil</a></td>
+                <td><a class="btn btn-outline-secondary" asp-controller="ContactUs" asp-route-id="@x.ContactUsId" asp-action="Detail">Aç</a></td>
+            </tr>
+        }
+    </tbody>
+</table>

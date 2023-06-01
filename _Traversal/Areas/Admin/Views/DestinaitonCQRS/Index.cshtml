@@ -1,0 +1,36 @@
+﻿@model List<GetAllDestinationQueryResult>
+
+<h1>CQRS Tur Verileri</h1>
+<br />
+
+<a asp-action="Add" class="my-3">Yeni Ekle</a>
+
+<table class="table table-bordered">
+    <thead>
+        <th>#</th>
+        <th>Şehir</th>
+        <th>Fiyat</th>
+        <th>Kapasite</th>
+        <th>Kaç Gün Kaç Gece</th>
+        <th>Sil</th>
+        <th>Güncelle</th>
+    </thead>
+    <tbody>
+        @{
+            int count = 0;
+        }
+        @foreach(var item in Model)
+        {
+            count++;
+            <tr>
+                <th>@count</th>
+                <td>@item.city</td>
+                <td>@item.price ₺</td>
+                <td>@item.capacity</td>
+                <td>@item.daynight</td>
+                <td><a class="btn btn-outline-danger" asp-action="DeleteDestination" asp-route-id="@item.id">Sil</a></td>
+                <td><a class="btn btn-outline-warning" asp-action="GetDestination" asp-route-id="@item.id">Güncelle</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
