@@ -1,0 +1,25 @@
+﻿@model List<AppUser>
+
+
+<table clasS="table table-bordered">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Kullanıcı</th>
+            <th>Rol Ata</th>
+        </tr>
+    </thead>
+    @{
+        var count = 0;
+    }
+    @foreach(var user in Model)
+    {
+        count++;
+        <tr>
+            <th>@count</th>
+            <td>@user.Name</td>
+            <td> <a asp-action="RoleAssign" asp-controller="Role" asp-route-id="@user.Id" class="btn btn-outline-warning">Rol Ata</a></td>
+        </tr>
+    }
+
+</table>
