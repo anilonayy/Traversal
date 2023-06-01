@@ -4,11 +4,11 @@
 
 <head>
     @await Html.PartialAsync("~/Areas/Member/Views/Shared/LayoutPartial/_HeadPartial.cshtml")
+    @await RenderSectionAsync("Css",required:false)
 </head>
 
 <body class="g-sidenav-show  bg-gray-100">
      @await Html.PartialAsync("~/Areas/Member/Views/Shared/LayoutPartial/_AsidePartial.cshtml")
-
     <main class="main-content position-relative max-height-vh-100 h-100 mt-1 border-radius-lg ">
         <!-- Navbar -->
         @await Html.PartialAsync("~/Areas/Member/Views/Shared/LayoutPartial/_NavbarPartial.cshtml")
@@ -19,6 +19,7 @@
         </div>
     </main>
     @await Html.PartialAsync("~/Areas/Member/Views/Shared/LayoutPartial/_ScriptPartial.cshtml")
+    @await RenderSectionAsync("Scripts",required:false)
 </body>
 
 </html>
