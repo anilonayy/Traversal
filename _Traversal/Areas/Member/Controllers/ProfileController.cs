@@ -2,6 +2,7 @@
 using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Server.HttpSys;
 
 namespace _Traversal.Areas.Member.Controllers
 {
@@ -10,9 +11,12 @@ namespace _Traversal.Areas.Member.Controllers
     public class ProfileController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
-        public ProfileController(UserManager<AppUser> userManager)
+        private readonly SignInManager<AppUser> _signInManager;
+
+        public ProfileController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [HttpGet]
@@ -62,6 +66,7 @@ namespace _Traversal.Areas.Member.Controllers
 
             if(result.Succeeded)
             {
+                await _signInManager.SignOutAsync();
                 return RedirectToAction("SignIn","Login", new {area = ""});
             }
 

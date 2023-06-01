@@ -36,6 +36,7 @@ namespace Traversal.Controllers
                     Email = SignUser.Email,
                     UserName = SignUser.Username
                 };
+
                 if(SignUser.Password.Equals(SignUser.ConfrimPassword))
                 {
                     var result = await _usermanager.CreateAsync(user, SignUser.Password);
@@ -71,13 +72,11 @@ namespace Traversal.Controllers
             if(ModelState.IsValid)
             {
                 var result = await _signinmanager.PasswordSignInAsync(vm.Username, vm.Password, false, true);
+
                 if(result.Succeeded)
                 {
-                    //return RedirectToAction("Update", "Profile", new { area = "Member" });
                     return RedirectToAction("Update", "Profile", new { area = "member" });
-
                 }
-
             }
             return View(vm);
         }
