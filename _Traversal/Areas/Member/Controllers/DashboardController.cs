@@ -1,12 +1,12 @@
-﻿using EntityLayer.Concrete;
+﻿using _Traversal.Areas.Member.Models;
+using EntityLayer.Concrete;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _Traversal.Areas.Member.Controllers
 {
-    [Area("Member")]
-    [Route("Member/{controller=Dashboard}/{action=Index}")]
-    public class DashboardController : Controller
+
+    public class DashboardController : BaseController
     {
         private readonly UserManager<AppUser> _userManager;
 
@@ -17,6 +17,13 @@ namespace _Traversal.Areas.Member.Controllers
 
         public async Task<IActionResult> Index()
         {
+            ViewBag.Breadcrumb = new Breadcrumb
+            {
+                HasSubTitle = false,
+                Title = "Dashboard",
+                SubTitle = ""
+
+            };
             var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
             ViewBag.userName = $"{user.Name} {user.Surname}";

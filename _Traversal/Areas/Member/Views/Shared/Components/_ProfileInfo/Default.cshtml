@@ -1,28 +1,15 @@
 ﻿<div class="col-12 col-xl-4">
-    <div class="card h-100">
-        <div class="card-header pb-0 p-3">
-            <div class="row">
-                <div class="col-md-8 d-flex align-items-center">
-                    <h6 class="mb-0">Profil Bilgileri</h6>
-                </div>
-                <div class="col-md-4 text-end">
-                    <a asp-action="Update" asp-controller="Profile">
-                        <i class="fas fa-user-edit text-secondary text-sm" data-bs-toggle="tooltip" data-bs-placement="top" title="Profili Düzenle"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+    <div class="card">
+        
         <div class="card-body p-3">
-            <p class="text-sm">
-                Traversal rezerasyon üye paneline hoş geldiniz. Sol tarafta bulunan menüler üzerinden geçmiş rezervasyonlarınızı , aktif rezervasyonlarınızı , onaylanmayan rezervasyonlarınızı ve iletişim detaylarını görebilirsiniz.
-            </p>
-            <hr class="horizontal gray-light my-4">
-            <ul class="list-group">
-                <li class="list-group-item border-0 ps-0 pt-0 text-sm"><strong class="text-dark">Ad Soyad:</strong> @ViewBag.MemberName</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Telefon:</strong> @ViewBag.MemberPhone </li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">E-Mail:</strong> @ViewBag.MemberMail</li>
-                <li class="list-group-item border-0 ps-0 text-sm"><strong class="text-dark">Konum:</strong> @ViewBag.MemberCountry</li>
-                <li class="list-group-item border-0 ps-0 pb-0">
+            <h4 class="card-title">Profil Bilgileri</h4>
+            <h6 class="card-subtitle text-muted">Profiliniz ile ilgili bilgiler  , güncellemek için <a asp-action="Update" asp-controller="Profile">tıklayınız</a>   </h6>
+            <ul class="list-group mt-3">
+                <li class="list-group-item border-0 px-0 ps-0 pt-0 text-sm"><strong class="text-dark">Ad Soyad:</strong> @ViewBag.MemberName</li>
+                <li class="list-group-item border-0 px-0 ps-0 pt-0  text-sm"><strong class="text-dark">Telefon:</strong> @ViewBag.MemberPhone </li>
+                <li class="list-group-item border-0 px-0 ps-0 pt-0  text-sm"><strong class="text-dark">E-Mail:</strong> @ViewBag.MemberMail</li>
+                <li class="list-group-item border-0 px-0 ps-0 pt-0  text-sm"><strong class="text-dark">Konum:</strong> @ViewBag.MemberCountry</li>
+                <li class="list-group-item border-0 px-0 ps-0 pt-0  pb-0">
 
                     <strong class="text-dark text-sm">Sosyal Medya:</strong> &nbsp;
                     <a class="btn btn-facebook btn-simple mb-0 ps-1 pe-2 py-0" href="javascript:;">

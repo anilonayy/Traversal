@@ -3,37 +3,64 @@
     ViewData["Title"] = "Aktif Rezarvasyonlar";
 }
 
-@if (!Model.Any())
-{
-    <h2>Henüz Reddedilen Rezervasyonunuz Yok.</h2>
-}
-else
-{
 
-    <table class="table table-bordered">
-        <thead>
-            <tr>
-                <td>#</td>
-                <td>City</td>
-                <td>Kişi Sayısı</td>
-                <td>Tarih</td>
-                <td>Açıklama</td>
-                <td>Durum</td>
-            </tr>
-        </thead>
-        <tbody>
-            @foreach (var x in Model)
-            {
-                <tr>
-                    <td>@x.Id</td>
-                    <td>@x.Destination.City</td>
-                    <td>@x.PersonCount</td>
-                    <td>@x.ReservationDate.ToShortDateString()</td>
-                    <td>@x.Description</td>
-                    <td>@x.Status</td>
-                </tr>
-            }
-        </tbody>
-    </table>
 
-}
+
+<section>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Güncel Rezervasyonlarım </h4>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis font-medium-3"></i></a>
+
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+
+
+
+
+                        @if (!Model.Any())
+                        {
+                            <h2>Henüz Güncel Rezervasyonunuz Yok.</h2>
+                        }
+                        else
+                        {
+
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <td>#</td>
+                                        <td>City</td>
+                                        <td>Kişi Sayısı</td>
+                                        <td>Tarih</td>
+                                        <td>Açıklama</td>
+                                        <td>Durum</td>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var x in Model)
+                                    {
+                                        <tr>
+                                            <td>@x.Id</td>
+                                            <td>@x.Destination.City</td>
+                                            <td>@x.PersonCount</td>
+                                            <td>@x.ReservationDate.ToShortDateString()</td>
+                                            <td>@x.Description</td>
+                                            <td>@x.Status</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+
+                        }
+
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+

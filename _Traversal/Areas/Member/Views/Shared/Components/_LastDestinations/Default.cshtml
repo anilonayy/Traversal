@@ -19,51 +19,54 @@
 
 
 
-<div class="col-12 mt-4">
-    <div class="card mb-4">
-        <div class="card-header pb-0 p-3">
-            <h6 class="mb-1">Son Rotalar</h6>
-            <p class="text-sm">Traversal Şirketinin Son Eklenen Rotaları</p>
-        </div>
-        <div class="card-body p-3">
-            <div class="row">
+<div class="col-xl-4 col-lg-12">
+    <div class="card">
+        <div class="card-content">
+            <div class="card-body">
+                <h4 class="card-title">Son Rotalar</h4>
+                <h6 class="card-subtitle text-muted">Son eklenen 4 rotamızı sizin için listeliyoruz.</h6>
+            </div>
+            <div id="carousel-area" class="carousel slide" data-ride="carousel">
+                @{
+                    int count = 1;
+                    string active = "active";
+                }
+                <ol class="carousel-indicators">
                 @foreach (var item in Model)
                 {
-                    <div class="col-xl-3 col-md-6 mb-xl-0 mb-4">
-                        <div class="card card-blog card-plain">
-                            <div class="position-relative">
-                                <a class="d-block shadow-xl border-radius-xl">
-                                    <img src="@item.CoverImage" alt="img-blur-shadow" class="img-fluid img-cover shadow border-radius-xl">
-                                </a>
-                            </div>
-                            <div class="card-body px-1 pb-0">
-                                <p class="text-gradient text-dark mb-2 text-sm">Rota #@item.DestinationId</p>
-                                <a href="javascript:;">
-                                    <h5>
-                                        @item.City
-                                    </h5>
-                                </a>
-                                <p class="mb-4 text-sm">
-                                    @{
-                                        desc = item.Description.Length > 120 ? item.Description.Substring(0, 120).ToString() + "..." : item.Description;
-                                    }
-                                    @desc
-                                </p>
-                                <div class="d-flex align-items-center justify-content-between">
-                                    <a asp-action="Detail" asp-route-id="@item.DestinationId" asp-controller="Destination" asp-area="" class="btn btn-outline-primary btn-sm mb-0">Rotayı Görüntüle</a>
-                                    <div class="avatar-group mt-2">
-                                        <a href="javascript:;" class="avatar avatar-xs rounded-circle" data-bs-toggle="tooltip" data-bs-placement="bottom" title="@item.Guide.Name">
-                                            <img alt="Image placeholder" src="/@item.Guide.Image">
-                                        </a>
+                   
+                        <li data-target="#carousel-area" data-slide-to="@count" class="@active"></li>
+                        active = "";
+                        count++;
+                    }
+                </ol>
 
-                                    </div>
-                                </div>
-                            </div>
+
+                
+                <div class="carousel-inner" role="listbox">
+                    @{
+                        string activeImg = "active";
+                    }
+                    @foreach(var item in Model)
+                    {
+                        <div class="carousel-item @activeImg" onclick="window.location.href='@{Url.Action("Detail","Destination",new {id=item.DestinationId}); }'  ">
+                            <img src="@item.CoverImage" class="d-block w-100" alt="slide-img">
                         </div>
-                    </div>
-                }
+                        activeImg = "";
+                    }
 
+                </div>
+                <a class="carousel-control-prev" href="#carousel-area" role="button" data-slide="prev">
+                    <span class="la la-angle-left" aria-hidden="true"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a class="carousel-control-next" href="#carousel-area" role="button" data-slide="next">
+                    <span class="la la-angle-right icon-next" aria-hidden="true"></span>
+                    <span class="sr-only">Next</span>
+                </a>
             </div>
+            
         </div>
+       
     </div>
 </div>
