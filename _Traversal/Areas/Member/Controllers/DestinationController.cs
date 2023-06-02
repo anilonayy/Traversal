@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace _Traversal.Areas.Member.Controllers
 {
-    [Area("Member")]
-    public class DestinationController : Controller
+
+    public class DestinationController : BaseController
     {
         IDestinationService destinationService;
 
@@ -13,6 +13,7 @@ namespace _Traversal.Areas.Member.Controllers
             destinationService = _destinationService;
         }
 
+        [HttpGet]
         public IActionResult Index()
         {
             var destinations = destinationService.TGetList();

@@ -1,27 +1,48 @@
 ﻿@model Reservation
 
-<form method="POST" asp-action="NewReservation" asp-controller="Reservation">
 
-    <div>
-        <label class="form-label" asp-for="DestinationId">Tur Seçin</label>
-        <select asp-items="@ViewBag.ListValues" asp-for="DestinationId" class="form-control"></select>
-        <span asp-validation-for="DestinationId" class="text-danger"></span>
-    </div>
-    <div>
-        <label class="form-label" asp-for="PersonCount">Tura Katılıcak Kişi Sayısı</label>
-        <input asp-for="PersonCount" class="form-control" />
-        <span asp-validation-for="PersonCount" class="text-danger"></span>
-    </div>
-    <div>
-        <label class="form-label" asp-for="ReservationDate">Rezervasyon Tarihi</label>
-        <input type="date" asp-for="ReservationDate" class="form-control" />
-        <span asp-validation-for="ReservationDate" class="text-danger"></span>
-    </div>
-    <div>
-        <label class="form-label" asp-for="Description"></label>
-        <textarea asp-for="Description" class="form-control"></textarea>
-        <span asp-validation-for="Description" class="text-danger"></span>
-    </div>
 
-    <button type="submit">Rezervasyon Oluştur</button>
-</form>
+
+<section>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Yeni Rezervasyon Yap </h4>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis font-medium-3"></i></a>
+                   
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <form method="POST" asp-action="NewReservation" asp-controller="Reservation">
+
+                            <div class="mb-2">
+                                <label class="form-label" asp-for="DestinationId">Tur Seçin</label>
+                                <select asp-items="@ViewBag.ListValues" asp-for="DestinationId" class="form-control"></select>
+                                <span asp-validation-for="DestinationId" class="text-danger"></span>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label" asp-for="PersonCount">Tura Katılıcak Kişi Sayısı</label>
+                                <input asp-for="PersonCount" class="form-control" />
+                                <span asp-validation-for="PersonCount" class="text-danger"></span>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label" asp-for="ReservationDate">Rezervasyon Tarihi</label>
+                                <input type="date" asp-for="ReservationDate" class="form-control" />
+                                <span asp-validation-for="ReservationDate" class="text-danger"></span>
+                            </div>
+                            <div class="mb-2">
+                                <label class="form-label" asp-for="Description">Açıklama</label>
+                                <textarea asp-for="Description" class="form-control"></textarea>
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+
+                            <button class="btn btn-success mt-3" type="submit">Rezervasyon Oluştur</button>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
