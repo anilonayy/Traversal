@@ -1,0 +1,26 @@
+﻿@inject Microsoft.AspNetCore.Mvc.Localization.IViewLocalizer localizer;
+
+
+
+<section>
+    <div class="row">
+        <div class="col-lg-12 col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h4 class="card-title">Çoklu Dil Desteği</h4>
+                    <a class="heading-elements-toggle"><i class="la la-ellipsis font-medium-3"></i></a>
+
+                </div>
+                <div class="card-content collapse show">
+                    <div class="card-body">
+                        <div class="card-text">
+                            <h1>Information Page</h1>
+                            @localizer["Merhaba"] @localizer["Bugün"] @localizer["Hava"] @localizer["Çok"] @localizer["Güzel"]
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
