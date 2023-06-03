@@ -17,6 +17,9 @@ namespace BusinessLayer.Concrete
         {
             _dal = dal;
         }
+
+
+
         public void TAdd(AppUser t)
         {
             _dal.Insert(t);
@@ -30,6 +33,11 @@ namespace BusinessLayer.Concrete
         public AppUser TGetById(int id)
         {
             return _dal.GetById(id);
+        }
+
+        public List<Comment> TGetComments(int userId)
+        {
+            return _dal.GetComments(userId);
         }
 
         public List<AppUser> TGetList()

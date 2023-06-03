@@ -9,6 +9,6 @@ namespace BusinessLayer.Abstract
 {
     public interface IAppUserService : IGenericService<AppUser>
     {
-
+        public List<Comment> TGetComments(int userId);
     }
 }

@@ -46,10 +46,13 @@
                 <div class="carousel-inner" role="listbox">
                     @{
                         string activeImg = "active";
+                        string link = "";
                     }
                     @foreach(var item in Model)
                     {
-                        <div class="carousel-item @activeImg" onclick="window.location.href='@{Url.Action("Detail","Destination",new {id=item.DestinationId}); }'  ">
+                         link = Url.Action("Detail", "Destination", new { id = item.DestinationId });
+
+                        <div class="carousel-item @activeImg" onclick="window.location.href='@link'" style="cursor:pointer">
                             <img src="@item.CoverImage" class="d-block w-100" alt="slide-img">
                         </div>
                         activeImg = "";

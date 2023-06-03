@@ -17,13 +17,15 @@
 
     <div class="app-content content">
         <div class="content-wrapper">
-            @await Html.PartialAsync("~/Areas/Member/Views/Shared/LayoutPartial/_BreadcrumbPartial.cshtml",new Breadcrumb{Title = ViewBag.Breadcrumb.Title , HasSubTitle =ViewBag.Breadcrumb.HasSubTitle,SubTitle=ViewBag.Breadcrumb.SubTitle})
 
+            @await Html.PartialAsync("~/Areas/Member/Views/Shared/LayoutPartial/_BreadcrumbPartial.cshtml",
+                new Breadcrumb{
+                    Title = ViewBag.Breadcrumb.Title ,
+                    HasSubTitle =ViewBag.Breadcrumb.HasSubTitle,
+                    SubTitle=ViewBag.Breadcrumb.SubTitle}
+            )
             <div class="content-body">
-
                 @RenderBody()
-
-
             </div>
         </div>
     </div>
@@ -32,7 +34,9 @@
 
 
     @await Html.PartialAsync("~/Areas/Member/Views/Shared/LayoutPartial/_FooterPartial.cshtml")
-    @await Html.PartialAsync("~/Areas/Member/Views/Shared/LayoutPartial/_ScriptPartial.cshtml")
+    <cache>
+        @await Html.PartialAsync("~/Areas/Member/Views/Shared/LayoutPartial/_ScriptPartial.cshtml")
+    </cache>
     @await RenderSectionAsync("Scripts",required:false)
 </body>
 
