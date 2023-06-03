@@ -29,11 +29,9 @@ namespace _Traversal.Areas.Member.Controllers
                 HasSubTitle = true,
                 Title = "Yorumlarım",
                 SubTitle = "Yorumlarım"
-
-
             };
-            var user = await _userManager.FindByNameAsync(User.Identity.Name);
 
+            var user = await _userManager.FindByNameAsync(User.Identity.Name);
             var comments = _appUserManager.TGetComments(user.Id);
 
             return View(comments);
