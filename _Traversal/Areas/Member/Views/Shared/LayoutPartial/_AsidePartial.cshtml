@@ -1,9 +1,9 @@
 ﻿
-<div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="~/member/theme-assets/images/backgrounds/02.jpg">
+<div class="main-menu menu-fixed menu-light menu-accordion    menu-shadow " data-scroll-to-active="true" data-img="/member/theme-assets/images/backgrounds/02.jpg">
     <div class="navbar-header">
         <ul class="nav navbar-nav flex-row">
             <li class="nav-item mr-auto">
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" asp-action="Index" asp-controller="Dashboard">
                     <img class="brand-logo" alt="Chameleon admin logo" src="~/member/theme-assets/images/logo/logo.png" />
                     <h3 class="brand-text">Chameleon</h3>
                 </a>
@@ -13,45 +13,68 @@
     </div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
-            <li class=" nav-item">
-<<<<<<< HEAD
-                <a asp-action="Index" asp-controller="Dashboard"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
-=======
-                <a asp-action="Index" asp-controller="Dashboard" asp-area="Member"><i class="ft-home"></i><span class="menu-title" data-i18n="">Dashboard</span></a>
->>>>>>> member-page
+
+            <li class=" nav-item @MenuHelper.IsActiveMenu(ViewContext,"Dashboard")">
+                <a asp-action="Index" asp-controller="Dashboard" asp-area="Member">
+                    <i class="ft-home"></i>
+                    <span class="menu-title" data-i18n="">Dashboard</span>
+                </a>
             </li>
-            <li class=" nav-item">
-                <a asp-action="Index" asp-controller="Destination" ><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Rotalar</span></a>
+            <li class=" nav-item @MenuHelper.IsActiveMenu(ViewContext,"Destination")">
+                <a asp-action="Index" asp-controller="Destination" >
+                    <i class="ft-map"></i>
+                    <span class="menu-title" data-i18n="">Rotalar</span>
+                </a>
             </li>
-            <li class=" nav-item">
-                <a asp-action="Update" asp-controller="Profile"><i class="ft-pie-chart"></i><span class="menu-title" data-i18n="">Profil Güncelle</span></a>
+            <li class=" nav-item @MenuHelper.IsActiveMenu(ViewContext,"Profile","Update")">
+                <a asp-action="Update" asp-controller="Profile">
+                    <i class="ft-pie-chart"></i>
+                    <span class="menu-title" data-i18n="">Profil Güncelle</span>
+                </a>
             </li>
-            <li class=" nav-item">
-                <a asp-action="NewReservation" asp-controller="Reservation"><i class="ft-droplet"></i><span class="menu-title" data-i18n="">Rezervasyon Yap</span></a>
+            <li class=" nav-item @MenuHelper.IsActiveMenu(ViewContext,"Reservation","NewReservation")">
+                <a asp-action="NewReservation" asp-controller="Reservation">
+                    <i class="ft-navigation"></i>
+                    <span class="menu-title" data-i18n="">Rezervasyon Yap</span>
+                    </a>
             </li>
-            <li class=" nav-item">
-                <a asp-action="MyOldReservations" asp-controller="Reservation"><i class="ft-layers"></i><span class="menu-title" data-i18n="">Geçmiş Rez.</span></a>
+            <li class=" nav-item  @MenuHelper.IsActiveMenu(ViewContext,"Reservation","MyOldReservations")">
+                <a asp-action="MyOldReservations" asp-controller="Reservation">
+                    <i class="ft-clock"></i>
+                    <span class="menu-title" data-i18n="">Geçmiş Rez.</span>
+                </a>
             </li>
-            <li class=" nav-item">
-                <a asp-action="MyAcceptedReservations" asp-controller="Reservation"><i class="ft-box"></i><span class="menu-title" data-i18n="">Onaylanmış Rez.</span></a>
+            <li class=" nav-item  @MenuHelper.IsActiveMenu(ViewContext,"Reservation","MyApprovalReservations")">
+                <a asp-action="MyApprovalReservations" asp-controller="Reservation">
+                    <i class="ft-cloud"></i>
+                    <span class="menu-title" data-i18n="">Bekleyen Rez.</span>
+                </a>
             </li>
-            <li class=" nav-item">
-                <a asp-action="MyApprovalReservations" asp-controller="Reservation"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Bekleyen Rez.</span></a>
+            <li class=" nav-item @MenuHelper.IsActiveMenu(ViewContext,"Reservation","MyAcceptedReservations")">
+                <a asp-action="MyAcceptedReservations" asp-controller="Reservation">
+                    <i class="ft-check"></i>
+                    <span class="menu-title" data-i18n="">Onaylanmış Rez.</span>
+                </a>
             </li>
-            <li class=" nav-item">
-                <a href="tables.html"><i class="ft-credit-card"></i><span class="menu-title" data-i18n="">Tables</span></a>
+
+
+         
+
+            <li class="nav-item  @MenuHelper.IsActiveMenu(ViewContext,"Comment")">
+                <a asp-controller="Comment" asp-action="Index">
+                    <i class="ft-command"></i>
+                    <span class="menu-title" data-i18n="">Yorumlarım</span>
+                </a>
             </li>
-            <li class=" nav-item">
-                <a href="form-elements.html"><i class="ft-layout"></i><span class="menu-title" data-i18n="">Form Elements</span></a>
-            </li>
+          
 
             <hr />
 
             <li class=" nav-item">
-                <a href="/"><i class="ft-bold"></i><span class="menu-title" data-i18n="">Siteye Dön</span></a>
+                <a href="/"><i class="ft-globe"></i><span class="menu-title" data-i18n="">Siteye Dön</span></a>
             </li>
             <li class=" nav-item">
-                <a asp-action="Logout" asp-controller="Login" asp-area=""><i class="ft-bold"></i><span class="menu-title" data-i18n="">Çıkış Yap</span></a>
+                <a asp-action="Logout" asp-controller="Login" asp-area=""><i class="ft-power"></i><span class="menu-title" data-i18n="">Çıkış Yap</span></a>
             </li>
            
         </ul>

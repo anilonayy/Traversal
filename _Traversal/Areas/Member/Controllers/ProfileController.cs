@@ -54,7 +54,7 @@ namespace _Traversal.Areas.Member.Controllers
                 var saveLocation = $"{resource}/wwwroot/user-images/{imageName}";
                 var stream = new FileStream(saveLocation, FileMode.Create);
                 await vm.Image.CopyToAsync(stream);
-                user.ImageUrl = imageName;
+                user.ImageUrl =  "user-images/"+imageName;
             }
 
 
