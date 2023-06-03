@@ -1,4 +1,5 @@
-﻿using BusinessLayer.Abstract;
+﻿using _Traversal.Areas.Member.Models;
+using BusinessLayer.Abstract;
 using Microsoft.AspNetCore.Mvc;
 
 namespace _Traversal.Areas.Member.Controllers
@@ -8,6 +9,8 @@ namespace _Traversal.Areas.Member.Controllers
     {
         IDestinationService destinationService;
 
+
+
         public DestinationController(IDestinationService _destinationService)
         {
             destinationService = _destinationService;
@@ -16,6 +19,14 @@ namespace _Traversal.Areas.Member.Controllers
         [HttpGet]
         public IActionResult Index()
         {
+            ViewBag.Breadcrumb = new Breadcrumb
+            {
+                HasSubTitle = true,
+                Title = "Rotalar",
+                SubTitle = "Rotalar"
+
+
+            };
             var destinations = destinationService.TGetList();
             return View(destinations);
         }
