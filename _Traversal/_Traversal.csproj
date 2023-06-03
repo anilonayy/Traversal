@@ -51,6 +51,7 @@
     <Folder Include="Areas\Admin\Data\" />
     <Folder Include="Areas\Admin\Views\DestinationMediatR\" />
     <Folder Include="Areas\Member\Data\" />
+    <Folder Include="Areas\Member\Resources\Views\" />
     <Folder Include="wwwroot\destination-images\" />
     <Folder Include="wwwroot\guide-images\" />
     <Folder Include="wwwroot\PdfReports\" />
