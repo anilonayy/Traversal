@@ -73,6 +73,15 @@ builder.Services.AddMvc(config =>
 
 });
 
+// Language Localization
+builder.Services.AddLocalization(opt =>
+{
+    opt.ResourcesPath = "Resources";
+});
+
+builder.Services.AddMvc().AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+
+
 builder.Services.ConfigureApplicationCookie(options =>
 {
     options.LoginPath = "/Login/SignIn";
@@ -103,6 +112,11 @@ app.UseAuthentication();
 app.UseRouting();
 
 app.UseAuthorization();
+
+var supportedCultures = new[] { "fr","es","gr","tr","de","en"};
+var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture("fr").AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
+
+app.UseRequestLocalization(localizationOptions);
 
 app.MapControllerRoute(
     name: "default",
