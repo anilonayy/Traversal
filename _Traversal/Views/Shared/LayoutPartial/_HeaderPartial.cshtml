@@ -1,4 +1,5 @@
-﻿
+﻿@using _Traversal.Areas.Member.Helpers;
+
 
 
 <header id="site-header" class="fixed-top">
@@ -19,19 +20,17 @@
 
             <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                 <ul class="navbar-nav mr-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" asp-action="Index" asp-controller="Default">Home <span class="sr-only">(current)</span></a>
+                    <li class="nav-item @MenuHelper.IsActiveMenu(ViewContext,"Default")">
+                        <a class="nav-link" asp-action="Index" asp-controller="Default">Ana Sayfa <span class="sr-only">(current)</span></a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" asp-action="Index" asp-controller="About">Hakkımızda</a>
-                    </li>
-                    <li class="nav-item">
+                    
+                    <li class="nav-item @MenuHelper.IsActiveMenu(ViewContext,"Destination")">
                         <a class="nav-link" asp-action="Index" asp-controller="Destination">Rotalar</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @MenuHelper.IsActiveMenu(ViewContext,"Guide")">
                         <a class="nav-link" asp-action="Index" asp-controller="Guide">Rehberlerimiz</a>
                     </li>
-                    <li class="nav-item">
+                    <li class="nav-item @MenuHelper.IsActiveMenu(ViewContext,"Contact")">
                         <a class="nav-link" asp-action="Index" asp-controller="Contact">İletişim</a>
                     </li>
 
