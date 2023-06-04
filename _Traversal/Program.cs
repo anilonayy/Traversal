@@ -5,7 +5,11 @@ using EntityLayer.Concrete;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Authorization;
+using Microsoft.AspNetCore.Mvc.Razor;
+using Microsoft.Extensions.Options;
+using System.Globalization;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -77,7 +81,15 @@ builder.Services.AddLocalization(opt =>
     opt.ResourcesPath = "Resources";
 });
 
-builder.Services.AddMvc().AddViewLocalization(Microsoft.AspNetCore.Mvc.Razor.LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
+builder.Services.Configure<RequestLocalizationOptions>(options =>
+{
+    options.SetDefaultCulture("tr");
+    options.AddSupportedUICultures("tr", "en", "fr");
+    options.FallBackToParentUICultures = true;
+    options.RequestCultureProviders.Clear();
+});
+
+builder.Services.AddMvc().AddViewLocalization(LanguageViewLocationExpanderFormat.Suffix).AddDataAnnotationsLocalization();
 
 
 builder.Services.ConfigureApplicationCookie(options =>
@@ -111,10 +123,12 @@ app.UseRouting();
 
 app.UseAuthorization();
 
-var supportedCultures = new[] { "fr","es","gr","tr","de","en"};
-var localizationOptions = new RequestLocalizationOptions().SetDefaultCulture("fr").AddSupportedCultures(supportedCultures).AddSupportedUICultures(supportedCultures);
 
-app.UseRequestLocalization(localizationOptions);
+
+app.UseRequestLocalization();
+
+// If there is a selected language in cookies, it sets it.
+app.UseSetSelectedCulture();
 
 app.MapControllerRoute(
     name: "default",

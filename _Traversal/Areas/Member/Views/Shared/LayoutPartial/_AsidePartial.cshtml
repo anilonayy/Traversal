@@ -16,42 +16,49 @@
     </div>
     <div class="main-menu-content">
         <ul class="navigation navigation-main" id="main-menu-navigation" data-menu="menu-navigation">
+
             <li class=" nav-item @MenuHelper.IsActiveMenu(ViewContext,"Dashboard")">
                 <a asp-action="Index" asp-controller="Dashboard" asp-area="Member">
                     <i class="ft-home"></i>
                     <span class="menu-title" data-i18n="">@localizer["Dashboard"]</span>
                 </a>
             </li>
+
             <li class=" nav-item @MenuHelper.IsActiveMenu(ViewContext,"Destination")">
                 <a asp-action="Index" asp-controller="Destination" >
                     <i class="ft-map"></i>
-                    <span class="menu-title" data-i18n="">@localizer["Rotalar"]</span>
+                    <span class="menu-title" data-i18n="">@localizer["Rotalar"]</span> 
                 </a>
             </li>
+
             <li class=" nav-item @MenuHelper.IsActiveMenu(ViewContext,"Profile","Update")">
                 <a asp-action="Update" asp-controller="Profile">
                     <i class="ft-pie-chart"></i>
                     <span class="menu-title" data-i18n="">@localizer["ProfilGuncelle"]</span>
                 </a>
             </li>
+
             <li class=" nav-item @MenuHelper.IsActiveMenu(ViewContext,"Reservation","NewReservation")">
                 <a asp-action="NewReservation" asp-controller="Reservation">
                     <i class="ft-navigation"></i>
                     <span class="menu-title" data-i18n="">@localizer["ReservasyonYap"]</span>
                     </a>
             </li>
+
             <li class=" nav-item  @MenuHelper.IsActiveMenu(ViewContext,"Reservation","MyOldReservations")">
                 <a asp-action="MyOldReservations" asp-controller="Reservation">
                     <i class="ft-clock"></i>
                     <span class="menu-title" data-i18n="">@localizer["GecmisRezervasyon"]</span>
                 </a>
             </li>
+
             <li class=" nav-item  @MenuHelper.IsActiveMenu(ViewContext,"Reservation","MyApprovalReservations")">
                 <a asp-action="MyApprovalReservations" asp-controller="Reservation">
                     <i class="ft-cloud"></i>
                     <span class="menu-title" data-i18n="">@localizer["BekleyenRezervasyon"]</span>
                 </a>
             </li>
+
             <li class=" nav-item @MenuHelper.IsActiveMenu(ViewContext,"Reservation","MyAcceptedReservations")">
                 <a asp-action="MyAcceptedReservations" asp-controller="Reservation">
                     <i class="ft-check"></i>
@@ -70,13 +77,17 @@
             </li>
           
 
-            <hr />
+
 
             <li class=" nav-item">
                 <a href="/"><i class="ft-globe"></i><span class="menu-title" data-i18n="">@localizer["SiteyeDon"]</span></a>
             </li>
+
             <li class=" nav-item">
-                <a asp-action="Logout" asp-controller="Login" asp-area=""><i class="ft-power"></i><span class="menu-title" data-i18n="">@localizer["CikisYap"]</span></a>
+                <a asp-action="Logout" asp-controller="Login" asp-area="">
+                    <i class="ft-power"></i>
+                    <span class="menu-title" data-i18n="">@localizer["CikisYap"]</span>
+                </a>
             </li>
            
         </ul>
