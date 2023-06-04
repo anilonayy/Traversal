@@ -6,6 +6,10 @@ namespace _Traversal.Areas.Member.Controllers
     [Route("Member/{controller=Dashboard}/{action=Index}/{id?}")]
     public class BaseController : Controller
     {
+<<<<<<< HEAD
 
+=======
+ 
+>>>>>>> member-page
     }
 }

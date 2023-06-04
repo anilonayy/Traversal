@@ -9,9 +9,14 @@
     <div class="col-12">
         <div class="card mb-4">
             <div class="card-header pb-0">
-                <h6>Tur Listesi</h6>
+                <h4>Tur Listesi</h4>
+
             </div>
             <div class="card-body px-0 pt-0 pb-2">
+                <div class="mb-2 col-12 col-md-4">
+                    <input type="search" id="ajax-search-input" class="form-control" />
+                </div>
+
                 <div class="table-responsive p-0">
                     <table class="table align-items-center mb-0">
                         <thead>
@@ -24,8 +29,8 @@
                                 <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 ps-2">Detaylar</th>
                             </tr>
                         </thead>
-                        <tbody>
-                            @foreach(var d in Model)
+                        <tbody id="body-results">
+                            @foreach (var d in Model)
                             {
                                 <tr>
                                     <td>@d.DestinationId</td>
@@ -45,3 +50,47 @@
         </div>
     </div>
 </div>
+
+
+@section Scripts{
+    <script>
+        const searchInput = $("#ajax-search-input");
+        const bodyResults = $("#body-results");
+
+
+        searchInput.on("input", function () {
+            var value = $(this).val();
+            $.get("/Member/Destination/GetCityByName", { city: value }, res => {
+                var count = res.length;
+
+                if(count==0)
+                {
+                    bodyResults.html("<div class='alert alert-warning my-2'>Herhangi bir sonuç yok. </div>");
+                }
+                else{
+                    bodyResults.empty();
+
+                    res.forEach((value, index) => {
+                        bodyResults.append(
+                            `
+                                            <tr>
+                                                    <td>${value.destinationId}</td>
+                                                    <td>${value.city}</td>
+                                                    <td>${value.dayNight}</td>
+                                                    <td>${value.capacity}</td>
+                                                    <td>${value.price}</td>
+                                                    <td>
+                                                        <a class="btn btn-outline-info" href="/destination/${value.destinationId}">Gör</a>
+                                                    </td>
+                                                </tr>
+
+                                    `
+                        )
+                    })
+                }
+            })
+        })
+
+
+    </script>
+}
