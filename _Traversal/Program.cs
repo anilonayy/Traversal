@@ -5,6 +5,7 @@ using EntityLayer.Concrete;
 using FluentValidation.AspNetCore;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -49,7 +50,7 @@ builder.Services.AddDbContext<Context>();
 BusinessLayer.Container.Extensions.ContainerDependencies(builder.Services);
 BusinessLayer.Container.Extensions.CustomValidator(builder.Services);
 
-    
+
 // Add Auto Mapper
 
 // Add Identity Class
@@ -64,7 +65,8 @@ builder.Services
         options.User.RequireUniqueEmail = true;
     })
     .AddEntityFrameworkStores<Context>()
-    .AddErrorDescriber<CustomIdentityValidator>(); // Özel mesajlara karþýlýk yaz.
+    .AddErrorDescriber<CustomIdentityValidator>() // Özel mesajlara karþýlýk yaz.
+    .AddTokenProvider<DataProtectorTokenProvider<AppUser>>(TokenOptions.DefaultProvider); // For reset password token generator
 
 builder.Services.AddMvc(config =>
 {
