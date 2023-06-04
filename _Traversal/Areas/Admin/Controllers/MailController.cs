@@ -10,7 +10,7 @@ namespace _Traversal.Areas.Admin.Controllers
 {
     public class MailController : BaseController
     {
-        IMailer _mailer;
+        private readonly IMailer _mailer;
         public MailController(IMailer mailer)
         {
             _mailer = mailer;
